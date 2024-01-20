@@ -10,7 +10,7 @@
 
 
     <div class="mx-auto" style="width: 400px;">
-        <form method="POST">
+        <form action="{{route('comentarios')}} "method="POST">
         {{ csrf_field()}}
 
         <div class="form-floating">

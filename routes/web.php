@@ -5,6 +5,7 @@ use App\Http\Controllers\PeliculasController;
 use App\Models\Ranking;
 use App\Http\Controllers\RankingController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,25 @@ Route::middleware('auth')->group(function () {
 Route::get('/pelicula', ([PeliculasController::class, 'index']))->name('pelicula');
 
 
-Route::post('/comentarios', ([RankingController::class, 'agregarComentario']))->name('comentarios'); 
+Route::match(['get', 'post'],'/comentarios', function(Request $request){
+
+       // $method = $request->method();
+   
+        if($request -> isMethod('post')){
+            Ranking::create([
+                'comentario'=> $request->input('comentario'),
+                'puntaje'=> $request->input('puntaje'),
+                'user_id'=> auth()->id(),
+                'pelicula_id' => 1
+
+            ]);
+
+            return back()->with('success', ' comentario realizado exitosamente'); 
+        }else {
+            return view('comentarios');
+        };
+     
+})->name('comentarios'); 
 
 
 

@@ -25,12 +25,16 @@
   </tr>
   <tr>
   @foreach ($listas as $lista)
-    <td>{!! $lista->nombre!!}</td>
-    <td>{!! $lista->director!!}</td>
-    <td>{!! $lista->año!!}</td>
-    <td ><a href="{{route('comentarios')}}">Comentar</a></td>
+  <tr>
+    <td>{!! $lista->nombre !!}</td>
+    <td>{!! $lista->director !!}</td>
+    <td>{!! $lista->año !!}</td>
+    <td>
+        <a href="{{route('comentarios')}}" >Comentar</a>
+    </td>
   </tr>
-  @endforeach
+@endforeach
+
 
 
 
