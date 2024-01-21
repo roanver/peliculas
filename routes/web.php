@@ -37,26 +37,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/pelicula', ([PeliculasController::class, 'index']))->name('pelicula');
 
+Route::post('/pelicula', ([RankingController::class, 'show']));
 
-Route::match(['get', 'post'],'/comentarios', function(Request $request){
+Route::get('/comentarios',([RankingController::class, 'show']))->name('comentarios.index'); 
 
-       // $method = $request->method();
-   
-        if($request -> isMethod('post')){
-            Ranking::create([
-                'comentario'=> $request->input('comentario'),
-                'puntaje'=> $request->input('puntaje'),
-                'user_id'=> auth()->id(),
-                'pelicula_id' => 1
-
-            ]);
-
-            return back()->with('success', ' comentario realizado exitosamente'); 
-        }else {
-            return view('comentarios');
-        };
-     
-})->name('comentarios'); 
+Route::post('/comentarios', ([RankingController::class, 'create'])); 
 
 
 

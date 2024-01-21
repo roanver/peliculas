@@ -30,10 +30,15 @@
     <td>{!! $lista->director !!}</td>
     <td>{!! $lista->año !!}</td>
     <td>
-        <a href="{{route('comentarios')}}" >Comentar</a>
+        <form method="POST">
+        {{ csrf_field() }}
+          <input type="hidden" name="idPeli" value="{!! $lista ->id!!}">
+          <x-primary-button>Comentar</x-primary-button>
+        </form>
     </td>
   </tr>
 @endforeach
+
 
 
 

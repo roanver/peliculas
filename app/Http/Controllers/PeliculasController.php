@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pelicula;
+use App\Models\Ranking;
 
 class PeliculasController extends Controller
 {
@@ -15,11 +16,11 @@ class PeliculasController extends Controller
     }
 
     public function show(Request $request){
-        return Pelicula::where('id', '=', $id)->get();
+        
+    
     }
-
-    public function aaa(){
-        return 'hola';
-    }
-
 }
+
+
+
+
