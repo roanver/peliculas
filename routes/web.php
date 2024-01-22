@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/pelicula', ([PeliculasController::class, 'index']))->name('pelicula');
+Route::get('/pelicula/{id}', ([PeliculasController::class, 'show']));
 
 Route::post('/pelicula', ([RankingController::class, 'show']));
 

@@ -19,7 +19,7 @@ class RankingController extends Controller
             'puntaje'=> $request->input('puntaje'),
             'user_id'=> auth()->id(),
             'pelicula_id' => $request->input('idPelicula')
-        ]); 
+        ]);
 
         return  redirect()->back();
         
@@ -27,7 +27,7 @@ class RankingController extends Controller
 
     public function show(Request $request){ 
        $id = $request->input('idPeli'); 
-        $vistaPeli = Pelicula::where('id', '=',$id)->get(); 
+        $vistaPeli = Pelicula::where('id', '=', $id)->first(); 
    
         $comentado =  Ranking::where('pelicula_id', $id)->get();
           //whereIn orWhere

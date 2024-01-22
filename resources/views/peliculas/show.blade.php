@@ -9,9 +9,9 @@
     <div class="card">
         <!--<img src="imagen_de_la_pelicula.jpg" class="card-img-top" alt="Imagen de la Película">-->
         <div class="card-body">
-            <h5 class="card-title">{{$vistaPeli ->nombre}}</h5>
-            <p class="card-text">Director: {{$vistaPeli -> director}}</p>
-            <p class="card-text">Año: {{$vistaPeli ->año}}</p>
+            <h5 class="card-title">{{$pelicula ->nombre}}</h5>
+            <p class="card-text">Director: {{$pelicula -> director}}</p>
+            <p class="card-text">Año: {{$pelicula ->año}}</p>
             <p class="card-text">Género: Acción, Aventura</p>
         </div>
     </div>
@@ -25,29 +25,26 @@
 
     <div class="mx-auto" style="width: 400px;">
         <form action="{{route('comentarios.index')}} "method="POST">
-        {{ csrf_field()}}
+            {{ csrf_field()}}
 
-        <div class="form-floating">
-        <input type="hidden" name="idPelicula" value="{{$vistaPeli->id}}">
+            <div class="form-floating">
+            <input type="hidden" name="idPelicula" value="{{$pelicula->id}}">
 
-            <textarea name="comentario" class="form-control" style="width: 500px" placeholder="Leave a comment here"></textarea>
-        </div>
-        <label>Puntaje</label>
-     
-        <input class="form"type="number" name="puntaje" min="1" max="5" style="height: 10px;px;"><br>
+                <textarea name="comentario" class="form-control" style="width: 500px" placeholder="Leave a comment here"></textarea>
+            </div>
+            <label>Puntaje</label>
+        
+            <input class="form"type="number" name="puntaje" min="1" max="5" style="height: 10px;px;"><br>
 
-        <x-primary-button type="submit" class="mt-3">Comentar</x-primary-button>
-
-       
-         
-    </form>
+            <x-primary-button type="submit" class="mt-3">Comentar</x-primary-button>  
+        </form>
     </div>
 
     <div class="container">
     <h1>Comentarios</h1>
 
         <ul class="list-group">
-            @foreach ($comentado as $comentario)
+            @foreach ($pelicula->rankings as $comentario)
                 <li class="list-group-item">
                     <div class="d-flex justify-content-between align-items-center">
                         <span>{{ $comentario->user->name }}</span>

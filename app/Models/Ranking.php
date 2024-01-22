@@ -18,4 +18,9 @@ class Ranking extends Model
 
         return $this->belongsTo(User::class);
     }
+
+    public function pelicula(): BelongsTo{
+
+        return $this->belongsTo(Pelicula::class);
+    }
 }

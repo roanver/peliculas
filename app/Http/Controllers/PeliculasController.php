@@ -15,9 +15,9 @@ class PeliculasController extends Controller
       return view('pelicula', compact('listas'));
     }
 
-    public function show(Request $request){
-        
-    
+    public function show($id, Request $request){
+      $pelicula = Pelicula::with('rankings.user')->findOrFail($id);
+      return view('peliculas.show', compact('pelicula'));
     }
 }
 

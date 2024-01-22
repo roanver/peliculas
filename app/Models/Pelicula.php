@@ -11,4 +11,9 @@ class Pelicula extends Model
         'director',
         'año',
     ];
+
+    public function rankings()
+    {
+        return $this->hasMany(Ranking::class, 'pelicula_id', 'id');
+    }
 }

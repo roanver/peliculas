@@ -6,7 +6,7 @@
 
 
 
-<form method="POST">
+    <form method="POST">
          {{ csrf_field() }}
         <input type="text" id="buscador" name="buscador" value="Buscador"><br>
         <x-primary-button type="submit" value="Buscar">Buscar</x-primary-buttonbutton>
