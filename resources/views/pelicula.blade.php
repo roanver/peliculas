@@ -24,15 +24,19 @@
     <th>Año</th>
   </tr>
   <tr>
+  
+
   @foreach ($listas as $lista)
+
   <tr>
     <td>{!! $lista->nombre !!}</td>
     <td>{!! $lista->director !!}</td>
     <td>{!! $lista->año !!}</td>
     <td>
-        <form method="POST">
+        <form action="{{route('peliculas.show', $lista->id)}}" method="GET">
+
         {{ csrf_field() }}
-          <input type="hidden" name="idPeli" value="{!! $lista ->id!!}">
+          <!--<input type="hidden" name="id" value="{{ $lista->id }}">-->
           <x-primary-button>Comentar</x-primary-button>
         </form>
     </td>

@@ -24,6 +24,7 @@
 
 
     <div class="mx-auto" style="width: 400px;">
+
         <form action="{{route('comentarios.index')}} "method="POST">
             {{ csrf_field()}}
 
@@ -32,9 +33,16 @@
 
                 <textarea name="comentario" class="form-control" style="width: 500px" placeholder="Leave a comment here"></textarea>
             </div>
+
+            @error('comentario')
+                <p style="color: red">{{$message}}</p>
+            @enderror
             <label>Puntaje</label>
         
             <input class="form"type="number" name="puntaje" min="1" max="5" style="height: 10px;px;"><br>
+            @error('puntaje')
+                <p style="color: red">{{$message}}</p>
+            @enderror
 
             <x-primary-button type="submit" class="mt-3">Comentar</x-primary-button>  
         </form>

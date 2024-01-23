@@ -36,13 +36,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/pelicula', ([PeliculasController::class, 'index']))->name('pelicula');
-Route::get('/pelicula/{id}', ([PeliculasController::class, 'show']));
 
-Route::post('/pelicula', ([RankingController::class, 'show']));
+Route::get('/pelicula/{id}', ([PeliculasController::class, 'show']))->name('peliculas.show');
 
-Route::get('/comentarios',([RankingController::class, 'show']))->name('comentarios.index'); 
 
-Route::post('/comentarios', ([RankingController::class, 'create'])); 
+//Route::get('/comentarios',([PeliculasController::class, 'show']))->name('comentarios.index'); 
+
+Route::post('/peliculas.show', ([RankingController::class, 'create']))->name('comentarios.index'); 
+
+//Route::post('/policulas.show', ([RankingController::class, 'store']))->name('comentarios.store');
 
 
 

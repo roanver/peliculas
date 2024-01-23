@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ranking;
-use App\Models\Pelicula;
+use Illuminate\Validation\Validator;
  
 
 
@@ -13,6 +13,12 @@ class RankingController extends Controller
 
 {
     public function create(Request $request){
+
+        $validated = $request->validate([
+            'comentario' => 'required|min:5|max:250',
+            'puntaje' =>'required|size:5|max_digits:1|integer'
+
+        ]);
 
         Ranking::create([
             'comentario'=> $request->input('comentario'),
@@ -25,14 +31,5 @@ class RankingController extends Controller
         
     }
 
-    public function show(Request $request){ 
-       $id = $request->input('idPeli'); 
-        $vistaPeli = Pelicula::where('id', '=', $id)->first(); 
-   
-        $comentado =  Ranking::where('pelicula_id', $id)->get();
-          //whereIn orWhere
-       // return view('pelis')->with('listas', $listas);
-       return view('comentarios', compact('comentado','vistaPeli'));
-     }
 
 }
