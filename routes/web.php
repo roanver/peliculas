@@ -44,7 +44,7 @@ Route::get('/pelicula/{id}', ([PeliculasController::class, 'show']))->name('peli
 
 Route::post('/peliculas.show', ([RankingController::class, 'create']))->name('comentarios.index'); 
 
-//Route::post('/policulas.show', ([RankingController::class, 'store']))->name('comentarios.store');
+Route::post('/pelicula', ([PeliculasController::class,'buscador']));
 
 
 

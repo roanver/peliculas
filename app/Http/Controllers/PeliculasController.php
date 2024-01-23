@@ -20,6 +20,13 @@ class PeliculasController extends Controller
       $pelicula = Pelicula::with('rankings.user')->findOrFail($id);
       return view('peliculas.show', compact('pelicula'));
     }
+
+    public function buscador(Request $request){
+
+      $parametro = $request->input('buscador');
+      $pelicula = Pelicula::with('ranking.user')->where('nombre',$parametro)->first();
+      return view('peliculas.show', compact('pelicula'));      
+    }
 }
 
 

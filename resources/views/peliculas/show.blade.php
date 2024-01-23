@@ -39,7 +39,7 @@
             @enderror
             <label>Puntaje</label>
         
-            <input class="form"type="number" name="puntaje" min="1" max="5" style="height: 10px;px;"><br>
+            <input class="form"type="number" name="puntaje" min="1" max="5" style="height: 10px;"><br>
             @error('puntaje')
                 <p style="color: red">{{$message}}</p>
             @enderror

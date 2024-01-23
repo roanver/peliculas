@@ -7,4 +7,8 @@
 
 
 
+    @dump($parametro)
+
+
+
 </x-app-layout>
