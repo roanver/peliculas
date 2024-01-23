@@ -16,7 +16,7 @@ class RankingController extends Controller
 
         $validated = $request->validate([
             'comentario' => 'required|min:5|max:250',
-            'puntaje' =>'required|size:5|max_digits:1|integer'
+            'puntaje' =>'required|min:0|max:5|max_digits:1|integer'
 
         ]);
 
