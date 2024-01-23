@@ -33,12 +33,7 @@
     <td>{!! $lista->director !!}</td>
     <td>{!! $lista->año !!}</td>
     <td>
-        <form action="{{route('peliculas.show', $lista->id)}}" method="GET">
-
-        {{ csrf_field() }}
-          <!--<input type="hidden" name="id" value="{{ $lista->id }}">-->
-          <x-primary-button>Comentar</x-primary-button>
-        </form>
+      <a class="btn btn-dark" href="{{route('peliculas.show', $lista->id)}}">Comentar</a>
     </td>
   </tr>
 @endforeach
