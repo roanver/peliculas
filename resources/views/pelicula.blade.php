@@ -30,9 +30,9 @@
     <br>
 
   
-  @foreach ($listas as $lista)
+    @foreach ($listas as $lista)
 
-  <div class="cards">
+      <div class="cards">
         <div class="img">
           <img src="https://th.bing.com/th/id/R.2cf292c20c7d2121c2853cdff87cef07?rik=JHHY72L351KNGg&pid=ImgRaw&r=0" class="card-img-top" alt="...">
         </div>  
@@ -44,10 +44,10 @@
         <div class="boton">
           <a class="btn btn-dark" href="{{route('peliculas.show', $lista->id)}}">Comentar</a>
         </div>
-</div>
+      </div>
 
   
-@endforeach
+    @endforeach
 
 
 

@@ -2,9 +2,9 @@
 .cards{
     width:200px;
     height:300px;
-    border-style:groove;
-
-    color:red;
+    border: 2px solid;
+    border-radius:5px;
+    color:black;
   }
   
   .img{
