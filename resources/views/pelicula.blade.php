@@ -1,4 +1,9 @@
 <x-app-layout>
+@push('styles')
+
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+@endpush
 
 
 <br>
@@ -8,44 +13,42 @@
 
 
 
-    <form method="POST">
+    <form action="{{route('pelicula')}}" method="GET">
          {{ csrf_field() }}
-        <input type="text" id="buscador" name="buscador"><br>
+        <input type="text" id="buscador" name="buscador">{{old
+          ('buscador')}}<br>
         <x-primary-button type="submit" value="Buscar">Buscar</x-primary-buttonbutton>
       
     </form>
 
+
+    
+
+
     <br>
     <br>
     <br>
 
-    <table>
-  <tr>
-    <th>Nombre</th>
-    <th>Director</th>
-    <th>Año</th>
-  </tr>
-  <tr>
   
-
   @foreach ($listas as $lista)
 
-  <tr>
-    <td>{!! $lista->nombre !!}</td>
-    <td>{!! $lista->director !!}</td>
-    <td>{!! $lista->año !!}</td>
-    <td>
-      <a class="btn btn-dark" href="{{route('peliculas.show', $lista->id)}}">Comentar</a>
-    </td>
-  </tr>
-@endforeach
-
-
-
-
+  <div class="cards">
+        <div class="img">
+          <img src="https://th.bing.com/th/id/R.2cf292c20c7d2121c2853cdff87cef07?rik=JHHY72L351KNGg&pid=ImgRaw&r=0" class="card-img-top" alt="...">
+        </div>  
+        <div class="card-body">
+          <h5>{!! $lista->nombre !!}</h5>
+          <p>Director: {!! $lista->director !!}</p>
+          <p>Año: {!! $lista->año !!}</p>
+        </div>
+        <div class="boton">
+          <a class="btn btn-dark" href="{{route('peliculas.show', $lista->id)}}">Comentar</a>
+        </div>
+</div>
 
   
-</table>
+@endforeach
+
 
 
 </x-app-layout>

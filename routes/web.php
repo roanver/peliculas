@@ -39,12 +39,11 @@ Route::get('/pelicula', ([PeliculasController::class, 'index']))->name('pelicula
 
 Route::get('/pelicula/{id}', ([PeliculasController::class, 'show']))->name('peliculas.show');
 
-
-//Route::get('/comentarios',([PeliculasController::class, 'show']))->name('comentarios.index'); 
-
 Route::post('/peliculas.show', ([RankingController::class, 'create']))->name('comentarios.index'); 
 
-Route::post('/pelicula', ([PeliculasController::class,'buscador']));
+Route::post('/pelicula', ([PeliculasController::class,'buscador']))->name('pelicula.b');
+
+
 
 
 

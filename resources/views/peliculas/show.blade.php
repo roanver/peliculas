@@ -17,7 +17,6 @@
     </div>
 </div>
 
-   
 
     <br>
     <br>
@@ -30,8 +29,7 @@
 
             <div class="form-floating">
             <input type="hidden" name="idPelicula" value="{{$pelicula->id}}">
-
-                <textarea name="comentario" class="form-control" style="width: 500px" placeholder="Leave a comment here"></textarea>
+                <textarea name="comentario" class="form-control" style="width: 500px" >{{old('comentario') }}</textarea>
             </div>
 
             @error('comentario')
@@ -39,7 +37,7 @@
             @enderror
             <label>Puntaje</label>
         
-            <input class="form"type="number" name="puntaje" min="1" max="5" style="height: 10px;"><br>
+            <input class="form"type="number"  value="{{old('puntaje') }}" name="puntaje" min="1" max="5" style="height: 10px;"><br>
             @error('puntaje')
                 <p style="color: red">{{$message}}</p>
             @enderror

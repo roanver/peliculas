@@ -1,0 +1,39 @@
+
+.cards{
+    width:200px;
+    height:300px;
+    border-style:groove;
+    color:red;
+  }
+  
+  .img{
+    padding-bottom: 0;
+  }
+  .img img{
+    width:100%;
+    height:auto;
+  }
+  
+  .card-body{
+    text-align:left;
+  }
+  h5{
+    
+    margin-top:1px;
+    margin-bottom:0px;
+  }
+    
+  
+  p{
+    margin:0px;
+  }
+  
+  .boton{
+    text-align:center;
+    border-style:solid;
+    border-radius:5px;
+    margin-left:20%;
+    margin-top:auto;
+    width:100px;
+  
+  }
