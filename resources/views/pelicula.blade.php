@@ -15,7 +15,7 @@
 
     <form action="{{route('pelicula')}}" method="GET">
          {{ csrf_field() }}
-        <input type="text" id="buscador" name="buscador">{{old
+        <input type="text" id="buscador" value="{{$busqueda}}"name="buscador">{{old
           ('buscador')}}<br>
         <x-primary-button type="submit" value="Buscar">Buscar</x-primary-buttonbutton>
       

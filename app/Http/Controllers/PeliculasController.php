@@ -19,7 +19,7 @@ class PeliculasController extends Controller
 
         $listas =  Pelicula::all();
 
-        return view('pelicula', compact('listas'));
+        return view('pelicula', compact('listas','busqueda'));
 
       }else{
 
@@ -28,7 +28,7 @@ class PeliculasController extends Controller
           ->orWhere('año','LIKE', '%'.$busqueda.'%')
         ->get();
 
-        return view('pelicula', compact('listas'));
+        return view('pelicula', compact('listas','busqueda'));
         
       }
 
