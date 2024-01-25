@@ -12,24 +12,16 @@ use Illuminate\Validation\Validator;
 class RankingController extends Controller
 
 {
-    public function create(Request $request){
+    public function create( $id, $rating){
+    
+        dd($id, $rating);
 
-        $validated = $request->validate([
-            'comentario' => 'required|min:5|max:250',
-            'puntaje' =>'required|min:1|max:5|integer'
+    Ranking::create([
+        'puntaje'=> $request->input('rating'),
+        'user_id'=> auth()->id(),
+        'pelicula_id' => $request->input('idPelicula')
+    ]);
 
-        ]);
-
-        Ranking::create([
-            'comentario'=> $request->input('comentario'),
-            'puntaje'=> $request->input('puntaje'),
-            'user_id'=> auth()->id(),
-            'pelicula_id' => $request->input('idPelicula')
-        ]);
-
-        return  redirect()->back();
-        
+    return  redirect()->back();
     }
-
-
 }

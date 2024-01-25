@@ -12,8 +12,12 @@ class Pelicula extends Model
         'año',
     ];
 
-    public function rankings()
+    public function comentario()
     {
-        return $this->hasMany(Ranking::class, 'pelicula_id', 'id');
+        return $this->hasMany(Comentario::class, 'pelicula_id', 'id');
+    }
+
+    public function ranking(){
+        return $this->hasMany(Ranking::class, 'pelicula_id', 'id'); 
     }
 }

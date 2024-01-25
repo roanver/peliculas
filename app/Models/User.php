@@ -44,7 +44,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function ranking():HasMany {
-        return $this->hasMany(Ranking::class);
+    public function comentario():HasMany {
+        return $this->hasMany(Comentario::class);
     }
 }

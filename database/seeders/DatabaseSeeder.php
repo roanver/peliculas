@@ -46,7 +46,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'El Cinefilo',
                 'email' => 'cinefilo@el.cl',
             'password' => '12346'
-                ]);
+        ]);
+
         \App\Models\User::create([
             'name' => 'Juanajuata',
             'email' => 'juanaju@el.cl',
@@ -60,8 +61,25 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Ranking::create([
-            'comentario' => 'maoma',
             'puntaje' => 2.5,
+            'user_id' => $user->id,
+            'pelicula_id'=> $pelicula->id
+        ]);
+
+        \App\Models\Comentario::create([
+            'comentario' => 'oye, han visto naruto? es muy buena esa seria, ya shao',
+            'user_id' => $user->id,
+            'pelicula_id'=> $pelicula->id
+        ]);
+
+        \App\Models\Comentario::create([
+            'comentario' => 'Pollitos en fuga es la onda! Risas aseguradas y unos pollos muy locos. 🐔😂',
+            'user_id' => $user->id,
+            'pelicula_id'=> $pelicula->id
+        ]);
+
+        \App\Models\Comentario::create([
+            'comentario' => 'Pollitos en fuga: pollos rebeldes con plumas y actitud. 🐣🤘',
             'user_id' => $user->id,
             'pelicula_id'=> $pelicula->id
         ]);

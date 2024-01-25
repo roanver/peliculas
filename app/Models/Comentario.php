@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
  
-class Ranking extends Model
+class Comentario extends Model
 {
     protected $fillable = [
-        'puntaje',
+        'comentario',
         'user_id',
         'pelicula_id'
     ];
@@ -20,6 +20,6 @@ class Ranking extends Model
 
     public function pelicula(): BelongsTo{
 
-        return $this->belongsTo(Pelicula::class);
+        return $this->belongsTo(Pelicula::class, 'id');
     }
 }

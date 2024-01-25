@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PeliculasController;
 use App\Models\Ranking;
 use App\Http\Controllers\RankingController;
+use App\Http\Controllers\ComentariosController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -39,13 +40,9 @@ Route::get('/pelicula', ([PeliculasController::class, 'index']))->name('pelicula
 
 Route::get('/pelicula/{id}', ([PeliculasController::class, 'show']))->name('peliculas.show');
 
-Route::post('/peliculas.show', ([RankingController::class, 'create']))->name('comentarios.index'); 
+Route::post('/peliculas.show', ([ComentariosController::class, 'create']))->name('comentarios.create');
 
-Route::post('/pelicula', ([PeliculasController::class,'buscador']))->name('pelicula.b');
-
-
-
-
+Route::get('/peliculas.show/{id}/{rating}', ([RankingController::class, 'create']))->name('comentarios.puntaje');
 
 
 require __DIR__.'/auth.php';

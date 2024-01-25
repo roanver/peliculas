@@ -14,8 +14,45 @@
   height: 40px;
 }
 .buscador-c .bu{
-  width: 610px;
+  width: 60px;
   border-radius: 5px;
   height: 41px;
   padding-bottom: 10px;
+}
+
+.rating {
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  color: #777777;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  float: right;
+  padding: 0;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.rating label:before {
+  content: '\2605';
+  padding: 5px;
+  color: #d8d8d8;
+}
+
+.rating input:checked ~ label:before,
+.rating input:checked ~ label:hover ~ label:before {
+  color: #ffcc00;
+}
+
+.rating:not(:checked) > label:hover:before,
+.rating:not(:checked) > label:hover ~ label:before {
+  color: #ffcc00;
 }
