@@ -42,7 +42,7 @@ Route::get('/pelicula/{id}', ([PeliculasController::class, 'show']))->name('peli
 
 Route::post('/peliculas.show', ([ComentariosController::class, 'create']))->name('comentarios.create');
 
-Route::get('/peliculas.show/{id}/{rating}', ([RankingController::class, 'create']))->name('comentarios.puntaje');
+Route::get('/peliculas.show/{id}', ([RankingController::class, 'crear']))->name('comentarios.puntaje');
 
 
 require __DIR__.'/auth.php';

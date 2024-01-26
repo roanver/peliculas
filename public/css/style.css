@@ -14,13 +14,13 @@
   height: 40px;
 }
 .buscador-c .bu{
-  width: 60px;
+  width: 600px;
   border-radius: 5px;
   height: 41px;
   padding-bottom: 10px;
 }
 
-.rating {
+/* .rating {
   display: inline-block;
   unicode-bidi: bidi-override;
   color: #777777;
@@ -47,6 +47,7 @@
   color: #d8d8d8;
 }
 
+
 .rating input:checked ~ label:before,
 .rating input:checked ~ label:hover ~ label:before {
   color: #ffcc00;
@@ -55,4 +56,32 @@
 .rating:not(:checked) > label:hover:before,
 .rating:not(:checked) > label:hover ~ label:before {
   color: #ffcc00;
+} */
+
+.puntos{
+  display: flex;
+  flex-direction: row;
+ 
+}
+
+.star{
+  font-size: 30px;
+  color:#bbb;
+  transition: color 0.3s;
+  cursor:pointer; 
+  margin: 5px;
+}
+
+
+.star:hover,
+.star.checked{
+  color:gold;
+}
+
+.stars{
+  cursor:pointer; 
+  font-size: 30px;
+  color:gold;
+  margin: 5px;
+
 }

@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function comentario():HasMany {
         return $this->hasMany(Comentario::class);
     }
+
+    public function ranking():HasMany {
+        return $this->hasMany(Ranking::class);
+    }
 }

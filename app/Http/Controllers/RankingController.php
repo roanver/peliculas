@@ -12,16 +12,37 @@ use Illuminate\Validation\Validator;
 class RankingController extends Controller
 
 {
-    public function create( $id, $rating){
-    
-        dd($id, $rating);
+        public function crear($id, Request $request){
+        // Obtén los valores del formulario
 
-    Ranking::create([
-        'puntaje'=> $request->input('rating'),
-        'user_id'=> auth()->id(),
-        'pelicula_id' => $request->input('idPelicula')
-    ]);
+        $rating = $request->Input('rating');
 
-    return  redirect()->back();
+       // dd($id, $rating);
+
+        $existingRanking = Ranking::where('user_id', auth()->id())
+            ->where('pelicula_id', $id)
+            ->first();
+
+        if ($existingRanking) {
+
+            $existingRanking->update(['puntaje' => $rating]);
+
+        } else {
+
+            Ranking::create([
+                'puntaje' => $rating,
+                'user_id' => auth()->id(),
+                'pelicula_id' => $id,
+            ]);
+        }
+        
+        return  redirect()->back();
+
+        
     }
 }
+
+
+ 
+    
+

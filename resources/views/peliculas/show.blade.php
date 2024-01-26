@@ -17,29 +17,84 @@
             </div>
         </div>
         <br>
-        <form>
-        <fieldset class="rating">
-            <input type="radio" id="star5" name="rating" value="5"  /><label for="star5" title="5 stars"></label>
-            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars"></label>
-            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars"></label>
-            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars"></label>
-            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
-            <a href="{{ route('comentarios.puntaje', ['id' => $pelicula->id, 'rating'=> ' ']) }}">Ver Comentarios</a>
-        </fieldset>
-    </form>
-   
 
+        
+
+    
+       
+       
+
+        <form id="puntuacionForm" action="{{ route('comentarios.puntaje', $pelicula->id )}}" method="get">
+            {{ csrf_field() }}
+        <fieldset class="rating">
+            @if( $punto == "1")
+            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="4" class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button> 
+            @elseif($punto == "2")
+            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="4" class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button> 
+            @elseif($punto == "3")
+            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="4" class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button> 
+            @elseif($punto == "4")
+            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="4" class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button> 
+            @elseif($punto == "5")
+            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="4" class="bi bi-star-fill stars"></button>
+            <button type="submit"  name="rating" value="5" class="bi bi-star-fill stars"></button> 
+            @elseif($punto == " ")
+            <button type="submit"  name="rating" value="1" class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="4" class="bi bi-star-fill star"></button>
+            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button>
+            @endif
+
+        </fieldset>
+ 
+        </form>
+        
+        
+        <!-- <button type="submit" id="star5" name="rating" value="1" class="bi bi-star-fill star"></button>
+        <button type="submit" id="star4" name="rating" value="2"  class="bi bi-star-fill star"></button>
+        <button type="submit" id="star3" name="rating" value="3"  class="bi bi-star-fill star"></button>
+        <button type="submit" id="star2" name="rating" value="4" class="bi bi-star-fill star"></button>
+        <button type="submit" id="star1" name="rating" value="5" class="bi bi-star-fill star"></button> -->
+    
+
+    <!-- <div class="puntos">
+        <i class="bi bi-star-fill star"></i>
+        <i class="bi bi-star-fill star"></i>
+        <i class="bi bi-star-fill star"></i>
+        <i class="bi bi-star-fill star"></i>
+        <i class="bi bi-star-fill star"></i>
+    </div> -->
+
+    <script src="/js/app.js"></script>
     <div class="mx-auto" style="width: 400px;">
 
-        <form action="{{route('comentarios.create')}} "method="POST">
+        <form action="{{route('comentarios.create')}} "method="post">
             {{ csrf_field()}}
 
             <div class="form-floating">
                 <input type="hidden" name="idPelicula" value="{{$pelicula->id}}">
                 <textarea name="comentario" class="form-control" style="width: 500px" >{{old('comentario') }}</textarea>
             </div>
-
-
             @error('comentario')
                 <p style="color: red">{{$message}}</p>
             @enderror
@@ -57,7 +112,6 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <span>{{ $comentario->user->name }}</span>
                         <span>{{ $comentario->comentario }}</span>
-                        <span>{{ $comentario->puntaje }}</span>
                     </div>
                     <p>{{ $comentario->contenido }}</p>
                 </li>
