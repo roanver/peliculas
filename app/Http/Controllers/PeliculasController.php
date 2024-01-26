@@ -17,39 +17,19 @@ class PeliculasController extends Controller
       $busqueda =  $request->buscador;
       
       if(empty($busqueda)){
-
         $listas =  Pelicula::all();
 
-        $listas->toArray();
-
-        foreach($listas as $key => $pelicula){
-
-        $promedio = DB::table('rankings')
-        ->where('pelicula_id', $pelicula->id)
-        ->avg('puntaje');
-
-        $listas[$key]->puntaje = $promedio;
-        }
-
       }else{
-
         $listas = Pelicula::where('nombre', 'LIKE', '%'.$busqueda.'%')
           ->orWhere('director','LIKE', '%'.$busqueda.'%')
           ->orWhere('año', $busqueda)
-        ->get();
-
-        foreach($listas as $key => $pelicula){
-
-        $price = DB::table('rankings')
-        ->where('pelicula_id', $pelicula->id)
-        ->avg('puntaje');
-  
-
-        $listas[$key]->puntaje = $price;
-
-        }
-
+          ->get();
       }
+
+      $listas->each(function($peli) {
+        $peli['puntaje'] = $peli->ranking()->avg('puntaje');
+      });
+
       return view('pelicula', compact('listas','busqueda'));
 
        //whereIn orWher

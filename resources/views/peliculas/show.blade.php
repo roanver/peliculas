@@ -18,47 +18,14 @@
         </div>
         <br>
 
-        <form id="puntuacionForm" action="{{ route('comentarios.puntaje', $pelicula->id )}}" method="get">
+        <form id="puntuacionForm" action="{{ route('comentarios.puntaje', $pelicula->id )}}" method="post">
             {{ csrf_field() }}
         <fieldset class="rating">
-            @if( $punto == "1")
-            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="4" class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button> 
-            @elseif($punto == "2")
-            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="4" class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button> 
-            @elseif($punto == "3")
-            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="4" class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button> 
-            @elseif($punto == "4")
-            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="4" class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button> 
-            @elseif($punto == "5")
-            <button type="submit"  name="rating" value="1" class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="4" class="bi bi-star-fill stars"></button>
-            <button type="submit"  name="rating" value="5" class="bi bi-star-fill stars"></button> 
-            @elseif($punto == " ")
-            <button type="submit"  name="rating" value="1" class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="4" class="bi bi-star-fill star"></button>
-            <button type="submit"  name="rating" value="5" class="bi bi-star-fill star"></button>
-            @endif
-
+            <button type="submit"  name="rating" value="1" class="bi bi-star-fill {{ $punto >= 1 ? 'stars' : 'star' }}"></button>
+            <button type="submit"  name="rating" value="2"  class="bi bi-star-fill {{ $punto >= 2 ? 'stars' : 'star' }}"></button>
+            <button type="submit"  name="rating" value="3"  class="bi bi-star-fill {{ $punto >= 3 ? 'stars' : 'star' }}"></button>
+            <button type="submit"  name="rating" value="4" class="bi bi-star-fill {{ $punto >= 4 ? 'stars' : 'star' }}"></button>
+            <button type="submit"  name="rating" value="5" class="bi bi-star-fill {{ $punto >= 5 ? 'stars' : 'star' }}"></button> 
         </fieldset>
  
         </form>
