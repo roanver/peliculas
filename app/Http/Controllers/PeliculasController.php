@@ -22,9 +22,6 @@ class PeliculasController extends Controller
 
         $listas->toArray();
 
-        //dd($listas);
-
-          
         foreach($listas as $key => $pelicula){
 
         $price = DB::table('rankings')
@@ -67,6 +64,20 @@ class PeliculasController extends Controller
       $puntaje = Ranking::select('puntaje')->where('user_id', auth()->id())
       ->where('pelicula_id','=',$id)
       ->get();
+
+      $price = DB::table('rankings')
+        ->where('pelicula_id', $id)
+        ->avg('puntaje');
+  
+
+       function addKeyAndValue( &$pelicula, $key, $price ) {
+
+        $pelicula[$key] = $price;
+      }
+
+      $key="puntaje"; 
+
+      addKeyAndValue($pelicula, $key, $price); 
 
       $punto=" ";
 

@@ -62,6 +62,7 @@
         </fieldset>
  
         </form>
+        <p>Promedio: {{$pelicula->puntaje}}</p>
         
         
         <!-- <button type="submit" id="star5" name="rating" value="1" class="bi bi-star-fill star"></button>
