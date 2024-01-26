@@ -18,7 +18,6 @@ class PeliculasController extends Controller
       
       if(empty($busqueda)){
         $listas =  Pelicula::all();
-
       }else{
         $listas = Pelicula::where('nombre', 'LIKE', '%'.$busqueda.'%')
           ->orWhere('director','LIKE', '%'.$busqueda.'%')
@@ -45,19 +44,19 @@ class PeliculasController extends Controller
       ->where('pelicula_id','=',$id)
       ->get();
 
-      $promedio = DB::table('rankings')
+      $price = DB::table('rankings')
         ->where('pelicula_id', $id)
         ->avg('puntaje');
   
 
-       function addKeyAndValue( &$pelicula, $key, $promedio ) {
+       function addKeyAndValue( &$pelicula, $key, $price ) {
 
-        $pelicula[$key] = $promedio;
+        $pelicula[$key] = $price;
       }
 
       $key="puntaje"; 
 
-      addKeyAndValue($pelicula, $key, $promedio); 
+      addKeyAndValue($pelicula, $key, $price); 
 
       $punto=" ";
 
@@ -70,7 +69,3 @@ class PeliculasController extends Controller
       return view('peliculas.show', compact('pelicula','punto')); 
   }
 }
-
-
-
-
