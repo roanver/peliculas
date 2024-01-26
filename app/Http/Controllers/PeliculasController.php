@@ -24,11 +24,11 @@ class PeliculasController extends Controller
 
         foreach($listas as $key => $pelicula){
 
-        $price = DB::table('rankings')
+        $promedio = DB::table('rankings')
         ->where('pelicula_id', $pelicula->id)
         ->avg('puntaje');
 
-        $listas[$key]->puntaje = $price;
+        $listas[$key]->puntaje = $promedio;
         }
 
       }else{
@@ -65,19 +65,19 @@ class PeliculasController extends Controller
       ->where('pelicula_id','=',$id)
       ->get();
 
-      $price = DB::table('rankings')
+      $promedio = DB::table('rankings')
         ->where('pelicula_id', $id)
         ->avg('puntaje');
   
 
-       function addKeyAndValue( &$pelicula, $key, $price ) {
+       function addKeyAndValue( &$pelicula, $key, $promedio ) {
 
-        $pelicula[$key] = $price;
+        $pelicula[$key] = $promedio;
       }
 
       $key="puntaje"; 
 
-      addKeyAndValue($pelicula, $key, $price); 
+      addKeyAndValue($pelicula, $key, $promedio); 
 
       $punto=" ";
 
