@@ -17,12 +17,41 @@ class PeliculasController extends Controller
       $busqueda =  $request->buscador;
       
       if(empty($busqueda)){
+
         $listas =  Pelicula::all();
+
+        $listas->toArray();
+
+        //dd($listas);
+
+          
+        foreach($listas as $key => $pelicula){
+
+        $price = DB::table('rankings')
+        ->where('pelicula_id', $pelicula->id)
+        ->avg('puntaje');
+
+        $listas[$key]->puntaje = $price;
+        }
+
       }else{
+
         $listas = Pelicula::where('nombre', 'LIKE', '%'.$busqueda.'%')
           ->orWhere('director','LIKE', '%'.$busqueda.'%')
           ->orWhere('año', $busqueda)
         ->get();
+
+        foreach($listas as $key => $pelicula){
+
+        $price = DB::table('rankings')
+        ->where('pelicula_id', $pelicula->id)
+        ->avg('puntaje');
+  
+
+        $listas[$key]->puntaje = $price;
+
+        }
+
       }
       return view('pelicula', compact('listas','busqueda'));
 
@@ -47,7 +76,6 @@ class PeliculasController extends Controller
             $punto = $puntaje[0]->puntaje;
         }
     }
-   
       return view('peliculas.show', compact('pelicula','punto')); 
   }
 }

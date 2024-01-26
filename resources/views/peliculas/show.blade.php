@@ -18,12 +18,6 @@
         </div>
         <br>
 
-        
-
-    
-       
-       
-
         <form id="puntuacionForm" action="{{ route('comentarios.puntaje', $pelicula->id )}}" method="get">
             {{ csrf_field() }}
         <fieldset class="rating">

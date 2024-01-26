@@ -35,7 +35,8 @@
           <div class="card-body">
           <h5 class="card-title">{!! $lista->nombre !!}</h5>
           <p class="card-text">Director: {!! $lista->director !!}</p>
-          <p class="card-text"><small class="text-body-secondary">Año: {!! $lista->año !!}</small></p>
+          <p class="card-text">Año: {!! $lista->año !!}</small></p>
+          <p class="card-text">Puntaje: {!! $lista->puntaje !!}</p>
           <a class="btn btn-dark" href="{{route('peliculas.show', $lista->id)}}">Comentar</a>
         </div>
       </div>
