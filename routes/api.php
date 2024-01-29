@@ -17,3 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login', [
+    App\Http\Controllers\LoginApiController::class,
+    'login'
+]);
+
+
+Route::get('/test', function (Request $request) {
+    return 'hola';
+});
+
+
+// get /peliculas => traer todas las peliculas y que permita filtrar
+// get /peliculas/{id} => traer informacion de la pelicula, comentario, puntaje
+// post /peliculas/{id}/comentar => permitir comentar una pelicula
+// put /peliculas/{id}/puntaje => permite cambiar el puntaje del usuario
