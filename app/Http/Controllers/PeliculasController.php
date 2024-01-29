@@ -69,7 +69,3 @@ class PeliculasController extends Controller
       return view('peliculas.show', compact('pelicula','punto')); 
   }
 }
-
-
-
-
