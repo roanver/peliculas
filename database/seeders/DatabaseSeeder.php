@@ -73,13 +73,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Comentario::create([
-            'comentario' => 'Pollitos en fuga es la onda! Risas aseguradas y unos pollos muy locos. 🐔😂',
+            'comentario' => 'Pollitos en fuga es la onda! Risas aseguradas y unos pollos muy locos. ',
             'user_id' => $user->id,
             'pelicula_id'=> $pelicula->id
         ]);
 
         \App\Models\Comentario::create([
-            'comentario' => 'Pollitos en fuga: pollos rebeldes con plumas y actitud. 🐣🤘',
+            'comentario' => 'Pollitos en fuga: pollos rebeldes con plumas y actitud. ',
             'user_id' => $user->id,
             'pelicula_id'=> $pelicula->id
         ]);

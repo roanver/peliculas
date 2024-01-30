@@ -43,7 +43,11 @@
     </div>
   </div>
   @endforeach
+  <div>
+    {{$listas->links()}}
   </div>
+  </div>
+  
 
 
 

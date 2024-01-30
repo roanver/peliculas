@@ -20,7 +20,11 @@ class ComentariosController extends Controller
             'pelicula_id' => $request->input('idPelicula')
         ]);
 
-        return  redirect()->back();
+        //return  redirect()->back();
+        return response()->json([
+            'status'=> true,
+            'message'=> 'Comentario realizado exitosamente'
+        ]);
         
     }
 }

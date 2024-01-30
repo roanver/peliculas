@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PeliculasController;
+use App\Models\Ranking;
+use App\Http\Controllers\RankingController;
+use App\Http\Controllers\ComentariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +31,18 @@ Route::post('login', [
 Route::get('/test', function (Request $request) {
     return 'hola';
 });
+
+Route::middleware('auth:sanctum')->group(function (){
+    Route::get('/peliculas', ([PeliculasController::class, 'index']))->name('pelicula');
+    Route::get('/pelicula/{id}', ([PeliculasController::class, 'show']))->name('peliculas.show');
+    Route::post('/peliculas/create', ([ComentariosController::class, 'create']))->name('comentarios.create');
+    Route::post('/peliculas/puntuar/{id}', ([RankingController::class, 'crear']))->name('comentarios.puntaje');
+});
+
+
+
+
+
 
 
 // get /peliculas => traer todas las peliculas y que permita filtrar

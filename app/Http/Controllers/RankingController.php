@@ -14,7 +14,6 @@ class RankingController extends Controller
 {
         public function crear($id, Request $request){
         // Obtén los valores del formulario
-
         $rating = $request->Input('rating');
 
        // dd($id, $rating);
@@ -24,8 +23,11 @@ class RankingController extends Controller
             ->first();
 
         if ($existingRanking) {
-
             $existingRanking->update(['puntaje' => $rating]);
+            return response()->json([
+                'status'=> true,
+                'message'=> 'Puntaje actualizado'
+            ]);
 
         } else {
 
@@ -36,7 +38,10 @@ class RankingController extends Controller
             ]);
         }
         
-        return  redirect()->back();
+        return response()->json([
+            'status'=> true,
+            'message'=> 'Puntaje guardado exitosamnete'
+        ]);
 
         
     }
