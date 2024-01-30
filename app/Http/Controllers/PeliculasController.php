@@ -13,30 +13,27 @@ use Illuminate\Support\Facades\DB;
 class PeliculasController extends Controller
 {
     public function index(Request $request){ 
-
       $busqueda =  $request->buscador;
-      
-      if(empty($busqueda)){
-        $listas =  Pelicula::all();
-          //dd($listas);
-      }else{
-        $listas = Pelicula::where('nombre', 'LIKE', '%'.$busqueda.'%')
-          ->orWhere('director','LIKE', '%'.$busqueda.'%')
-          ->orWhere('año', $busqueda)
-          ->get();
-      }
-
-      $listas->each(function($peli) {
-        $peli->puntaje = $peli->ranking()->avg('puntaje');
-      });
-
-      //return view('pelicula', compact('listas','busqueda'));
-
-      return response()->json($listas);
-
+      $listas = $this->filtrarPelicular($request);
+      return view('pelicula', compact('listas','busqueda'));
        //whereIn orWher
       // return view('pelis')->with('listas', $listas);
       //return view('pelicula', compact('listas','peliculas'));
+    }
+
+    public function indexApi(Request $request){ 
+      $listas = $this->filtrarPelicular($request);
+      return response()->json($listas);
+    }
+
+    public function filtrarPelicular($request) {
+      $busqueda =  $request->buscador;
+
+      return Pelicula::filtrar($busqueda)->withAvg('ranking as puntaje', 'puntaje')->get();
+
+      // ->each(function($peli) {
+      //     $peli->puntaje = $peli->ranking()->avg('puntaje');
+      // });
     }
 
 

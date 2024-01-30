@@ -33,7 +33,7 @@ Route::get('/test', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function (){
-    Route::get('/peliculas', ([PeliculasController::class, 'index']))->name('pelicula');
+    Route::get('/peliculas', ([PeliculasController::class, 'indexApi']))->name('pelicula');
     Route::get('/pelicula/{id}', ([PeliculasController::class, 'show']))->name('peliculas.show');
     Route::post('/peliculas/create', ([ComentariosController::class, 'create']))->name('comentarios.create');
     Route::post('/peliculas/puntuar/{id}', ([RankingController::class, 'crear']))->name('comentarios.puntaje');

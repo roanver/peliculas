@@ -14,9 +14,9 @@ class RankingController extends Controller
 {
         public function crear($id, Request $request){
         // Obtén los valores del formulario
-        $rating = $request->Input('rating');
+        $rating = $request->input('rating');
 
-       // dd($id, $rating);
+    //    dd($id, $rating);
 
         $existingRanking = Ranking::where('user_id', auth()->id())
             ->where('pelicula_id', $id)

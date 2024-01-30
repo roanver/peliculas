@@ -20,4 +20,18 @@ class Pelicula extends Model
     public function ranking(){
         return $this->hasMany(Ranking::class, 'pelicula_id', 'id'); 
     }
+
+    public function scopeFiltrar($query, $busqueda) {
+      
+        if(!empty($busqueda)){
+            $query->where('nombre', 'LIKE', '%'.$busqueda.'%')
+                    ->orWhere('director','LIKE', '%'.$busqueda.'%');
+
+            if (is_numeric($busqueda)) {
+                $query->orWhere('año', $busqueda);
+            }
+        }
+
+        return $query;
+    }
 }
